@@ -1,0 +1,30 @@
+{{!
+    Attendee table.
+}}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">{{#str}}name, core{{/str}}</th>
+            <th scope="col">{{#str}}email, core{{/str}}</th>
+            <th scope="col">{{#str}}status, mod_muappointments{{/str}}</th>
+            <th scope="col">{{#str}}datetime, mod_muappointments{{/str}}</th>
+            <th scope="col">{{#str}}bookedby, mod_muappointments{{/str}}</th>
+            <th scope="col">{{#str}}actions, core{{/str}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#rows}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{status}}</td>
+                <td>{{time}}</td>
+                <td>{{bookedby}}</td>
+                <td>{{{actions}}}</td>
+            </tr>
+        {{/rows}}
+        {{^hasrows}}
+            <tr><td colspan="6">{{#str}}noattendees, mod_muappointments{{/str}}</td></tr>
+        {{/hasrows}}
+    </tbody>
+</table>

@@ -1,0 +1,70 @@
+{{!
+    Appointment list.
+}}
+<div class="muappointments" data-region="muappointments">
+    {{#canedit}}
+        <div class="btn-group mb-3" role="group" aria-label="{{#str}}addappointment, mod_muappointments{{/str}}">
+            <button type="button" class="btn btn-primary" data-action="add" data-title="{{#str}}addappointment, mod_muappointments{{/str}}">
+                {{#str}}addappointment, mod_muappointments{{/str}}
+            </button>
+            <button type="button" class="btn btn-secondary" data-action="addmultiple" data-title="{{#str}}addmultiple, mod_muappointments{{/str}}">
+                {{#str}}addmultiple, mod_muappointments{{/str}}
+            </button>
+        </div>
+    {{/canedit}}
+    {{#managefieldsurl}}
+        <p><a href="{{managefieldsurl}}">{{#str}}managecustomfields, mod_muappointments{{/str}}</a></p>
+    {{/managefieldsurl}}
+    {{#cancellationsurl}}
+        <p><a href="{{cancellationsurl}}">{{#str}}cancellations, mod_muappointments{{/str}}</a></p>
+    {{/cancellationsurl}}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">{{#str}}datetime, mod_muappointments{{/str}}</th>
+                <th scope="col">{{#str}}bookedcapacity, mod_muappointments{{/str}}</th>
+                <th scope="col">{{#str}}status, mod_muappointments{{/str}}</th>
+                <th scope="col">{{#str}}actions, core{{/str}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#appointments}}
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-link" data-action="toggle" data-appointmentid="{{id}}" aria-expanded="false">
+                            {{#str}}showdetails, mod_muappointments{{/str}}
+                        </button>
+                    </td>
+                    <td>{{when}}</td>
+                    <td>{{booked}}/{{capacity}}</td>
+                    <td>
+                        {{statuslabel}}
+                        {{#mystatus}}<div class="small text-muted">{{mystatus}}</div>{{/mystatus}}
+                    </td>
+                    <td>
+                        {{#actions}}
+                            {{{html}}}
+                        {{/actions}}
+                    </td>
+                </tr>
+                <tr class="d-none" data-region="details" data-appointmentid="{{id}}">
+                    <td colspan="5">
+                        {{#description}}{{{description}}}{{/description}}
+                        {{#fields}}
+                            <div><strong>{{name}}:</strong> {{value}}</div>
+                        {{/fields}}
+                        {{#sessions}}
+                            <div>{{label}}</div>
+                        {{/sessions}}
+                    </td>
+                </tr>
+            {{/appointments}}
+            {{^hasappointments}}
+                <tr>
+                    <td colspan="5">{{#str}}noappointments, mod_muappointments{{/str}}</td>
+                </tr>
+            {{/hasappointments}}
+        </tbody>
+    </table>
+</div>
