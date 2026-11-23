@@ -1,0 +1,26 @@
+{{!
+    Cancellation history.
+}}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">{{#str}}name, core{{/str}}</th>
+            <th scope="col">{{#str}}cancelreason, mod_muappointments{{/str}}</th>
+            <th scope="col">{{#str}}datetime, mod_muappointments{{/str}}</th>
+            <th scope="col">{{#str}}remove, mod_muappointments{{/str}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#rows}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{note}}</td>
+                <td>{{time}}</td>
+                <td>{{actor}}</td>
+            </tr>
+        {{/rows}}
+        {{^hasrows}}
+            <tr><td colspan="4">{{#str}}nocancellations, mod_muappointments{{/str}}</td></tr>
+        {{/hasrows}}
+    </tbody>
+</table>

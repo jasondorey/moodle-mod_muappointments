@@ -1,0 +1,9 @@
+.muappointments .btn + .btn,
+.muappointments a.btn {
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.muappointments tr[data-region="details"] td {
+    background: #f8f9fa;
+}
